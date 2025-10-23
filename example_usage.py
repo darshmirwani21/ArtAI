@@ -8,7 +8,7 @@ import os
 from model import ArtStyleAnalyzer
 
 def main():
-    """Example usage of the ArtStyleAnalyzer."""
+    '''Example usage of the ArtStyleAnalyzer'''
     
     # Defining Image Path
     image_path = "impresion.jpg"  
@@ -16,7 +16,6 @@ def main():
     # Check if example image exists
     if not os.path.exists(image_path):
         print(f"Please provide an image at: {image_path}")
-        print("You can use any JPEG or PNG image file.")
         return
     
     # Initialize the analyzer
