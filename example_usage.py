@@ -48,14 +48,15 @@ def main():
         
         print("\nColor Suggestions:")
         for color in feedback['color_suggestions']:
-            print(f"  • {color}")
+            print(f"{color}")
         
         print("\nTechnique Suggestions:")
         for technique in feedback['technique_suggestions']:
-            print(f"  • {technique}")
+            print(f"{technique}")
             
     except Exception as e:
         print(f"Error during analysis: {e}")
 
 if __name__ == "__main__":
     main()
+

@@ -1,6 +1,6 @@
 # Art Style Analyzer
 
-A Python program that uses a Vision Transformer (ViT) to analyze uploaded images and provide feedback on how to align them with specific art styles.
+A web-based application that uses a Vision Transformer (ViT) to analyze uploaded paintings and provide AI-powered feedback on how to align them with specific art styles. Features a beautiful, modern web interface with drag-and-drop image upload.
 
 ## Features
 
@@ -23,6 +23,35 @@ A Python program that uses a Vision Transformer (ViT) to analyze uploaded images
 ```bash
 pip install -r requirements.txt
 ```
+
+## Web Application (Recommended)
+
+The easiest way to use the Art Style Analyzer is through the web interface:
+
+1. **Start the web server:**
+```bash
+python app.py
+```
+
+2. **Open your browser and navigate to:**
+```
+http://localhost:5000
+```
+
+3. **Upload your painting:**
+   - Drag and drop an image onto the upload area, or click to browse
+   - Select your target art style from the dropdown
+   - Click "Analyze Painting" to get feedback
+
+The web interface features:
+- Beautiful, modern UI with gradient design
+- Drag-and-drop file upload
+- Image preview before analysis
+- Real-time loading indicators
+- Comprehensive results display
+- Responsive design for mobile devices
+
+## Command Line Interface (Alternative)
 
 ## Usage
 
@@ -146,3 +175,4 @@ The program provides structured feedback including:
 - Interactive web interface
 - Real-time style transfer visualization
 - Batch processing capabilities
+

@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Art Style Analyzer - AI-Powered Painting Analysis</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🎨 Art Style Analyzer</h1>
+            <p class="subtitle">Upload your painting and receive AI-powered feedback on aligning it with different art styles</p>
+        </header>
+
+        <main>
+            <div class="upload-section">
+                <div class="upload-area" id="uploadArea">
+                    <input type="file" id="fileInput" accept="image/*" hidden>
+                    <div class="upload-content" id="uploadContent">
+                        <svg class="upload-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                            <polyline points="17 8 12 3 7 8"></polyline>
+                            <line x1="12" y1="3" x2="12" y2="15"></line>
+                        </svg>
+                        <h3>Drag & Drop Your Painting</h3>
+                        <p>or click to browse</p>
+                        <p class="file-info">Supports: JPG, PNG, GIF, BMP, WEBP (Max 16MB)</p>
+                    </div>
+                    <div class="image-preview" id="imagePreview" style="display: none;">
+                        <img id="previewImage" src="" alt="Preview">
+                        <button class="remove-btn" id="removeBtn">✕</button>
+                    </div>
+                </div>
+
+                <div class="style-selector">
+                    <label for="styleSelect">Target Art Style:</label>
+                    <select id="styleSelect">
+                        <option value="art_nouveau">Art Nouveau</option>
+                        <option value="cubism">Cubism</option>
+                        <option value="expressionism">Expressionism</option>
+                        <option value="fauvism">Fauvism</option>
+                        <option value="futurism">Futurism</option>
+                        <option value="impressionism">Impressionism</option>
+                        <option value="neoclassicism">Neoclassicism</option>
+                        <option value="surrealism">Surrealism</option>
+                    </select>
+                </div>
+
+                <button class="analyze-btn" id="analyzeBtn" disabled>
+                    <span class="btn-text">Analyze Painting</span>
+                    <span class="btn-loader" style="display: none;"></span>
+                </button>
+            </div>
+
+            <div class="results-section" id="resultsSection" style="display: none;">
+                <div class="result-header">
+                    <h2>Analysis Results</h2>
+                    <button class="close-btn" id="closeResults">✕</button>
+                </div>
+
+                <div class="result-content">
+                    <div class="result-card">
+                        <h3>Target Style</h3>
+                        <p class="style-name" id="targetStyle"></p>
+                    </div>
+
+                    <div class="result-card">
+                        <h3>Style Characteristics</h3>
+                        <ul id="styleCharacteristics"></ul>
+                    </div>
+
+                    <div class="result-card">
+                        <h3>Recommendations</h3>
+                        <ol id="recommendations"></ol>
+                    </div>
+
+                    <div class="result-card">
+                        <h3>Color Suggestions</h3>
+                        <div class="tag-list" id="colorSuggestions"></div>
+                    </div>
+
+                    <div class="result-card">
+                        <h3>Technique Suggestions</h3>
+                        <div class="tag-list" id="techniqueSuggestions"></div>
+                    </div>
+
+                    <div class="result-card">
+                        <h3>Technical Analysis</h3>
+                        <div class="tech-stats" id="technicalAnalysis"></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="error-message" id="errorMessage" style="display: none;"></div>
+        </main>
+
+        <footer>
+            <p>Powered by Vision Transformer (ViT-B/16) | Built for Art Analysis</p>
+        </footer>
+    </div>
+
+    <script src="{{ url_for('static', filename='js/app.js') }}"></script>
+</body>
+</html>
+
