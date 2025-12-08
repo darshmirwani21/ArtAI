@@ -143,9 +143,10 @@ async function analyzeImage() {
 }
 
 function displayResults(feedback) {
-    // Target style
-    document.getElementById('targetStyle').textContent = 
-        feedback.target_style.charAt(0).toUpperCase() + feedback.target_style.slice(1);
+    // Target style - format the name to match dropdown display
+    const styleOption = document.querySelector(`#styleSelect option[value="${feedback.target_style}"]`);
+    const displayName = styleOption ? styleOption.textContent : feedback.target_style;
+    document.getElementById('targetStyle').textContent = displayName;
     
     // Style characteristics
     const characteristicsList = document.getElementById('styleCharacteristics');
@@ -211,4 +212,3 @@ function showError(message) {
 function hideError() {
     errorMessage.style.display = 'none';
 }
-

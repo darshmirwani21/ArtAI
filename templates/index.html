@@ -4,12 +4,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Art Style Analyzer - AI-Powered Painting Analysis</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
 </head>
 <body>
     <div class="container">
         <header>
-            <h1>🎨 Art Style Analyzer</h1>
+            <h1>Welcome to STYLO</h1>
             <p class="subtitle">Upload your painting and receive AI-powered feedback on aligning it with different art styles</p>
         </header>
 
@@ -23,8 +24,7 @@
                             <polyline points="17 8 12 3 7 8"></polyline>
                             <line x1="12" y1="3" x2="12" y2="15"></line>
                         </svg>
-                        <h3>Drag & Drop Your Painting</h3>
-                        <p>or click to browse</p>
+                        <h3>Drag or Drop Your Painting</h3>
                         <p class="file-info">Supports: JPG, PNG, GIF, BMP, WEBP (Max 16MB)</p>
                     </div>
                     <div class="image-preview" id="imagePreview" style="display: none;">

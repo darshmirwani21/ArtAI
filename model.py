@@ -82,8 +82,17 @@ class ArtStyleAnalyzer:
         Accepts either a file path (str) or a file-like object (BytesIO, file object).
         """
         try:
-            # Load and preprocess image - handles both file path and file object
-            image = Image.open(image_input).convert('RGB')
+            # Load and preprocess image. Supports:
+            # - PIL.Image.Image instances (already loaded Pillow images)
+            # - file paths (str)
+            # - file-like objects (BytesIO, Werkzeug FileStorage stream, etc.)
+            if isinstance(image_input, Image.Image):
+                image = image_input.convert('RGB')
+            else:
+                # Reset stream position if it's a file-like object
+                if hasattr(image_input, 'seek'):
+                    image_input.seek(0)
+                image = Image.open(image_input).convert('RGB')
             
             input_tensor = self.transform(image).unsqueeze(0).to(self.device)
             
@@ -118,8 +127,14 @@ class ArtStyleAnalyzer:
         Accepts either a file path (str) or a file-like object (BytesIO, file object).
         """
         try:
-            # Load image - handles both file path and file object
-            image = Image.open(image_input).convert('RGB')
+            # Load image. Support PIL.Image.Image, file path, or file-like objects.
+            if isinstance(image_input, Image.Image):
+                image = image_input.convert('RGB')
+            else:
+                # Reset stream position if it's a file-like object
+                if hasattr(image_input, 'seek'):
+                    image_input.seek(0)
+                image = Image.open(image_input).convert('RGB')
             
             # Basic image analysis
             width, height = image.size
@@ -137,7 +152,9 @@ class ArtStyleAnalyzer:
             contrast = np.std(img_array)
             
             # Edge detection for brushstroke analysis
-            gray = transforms.functional.to_grayscale(transforms.ToTensor()(image))
+            # Convert PIL Image to grayscale, then to tensor
+            gray_image = image.convert('L')  # Convert to grayscale PIL Image
+            gray = transforms.ToTensor()(gray_image)
             edges = torch.abs(torch.diff(gray, dim=-1))
             texture_complexity = torch.mean(edges).item()
             

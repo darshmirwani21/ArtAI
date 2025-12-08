@@ -4,6 +4,7 @@ from werkzeug.utils import secure_filename
 import os
 import io
 from model import ArtStyleAnalyzer
+from PIL import Image
 import traceback
 
 app = Flask(__name__)
@@ -64,13 +65,17 @@ def analyze():
         if target_style not in valid_styles:
             return jsonify({'error': f'Invalid style. Must be one of: {", ".join(valid_styles)}'}), 400
         
-        # Read file into memory
+        # Read file into memory and convert to a Pillow Image
         file_stream = io.BytesIO(file.read())
-        file_stream.seek(0)  # Reset stream position
-        
-        # Get analyzer and process
+        file_stream.seek(0)
+        try:
+            pil_image = Image.open(file_stream).convert('RGB')
+        except Exception:
+            return jsonify({'error': 'Uploaded file could not be read as an image.'}), 400
+
+        # Get analyzer and process (now supports PIL Image instances)
         analyzer = get_analyzer()
-        feedback = analyzer.generate_style_feedback(file_stream, target_style)
+        feedback = analyzer.generate_style_feedback(pil_image, target_style)
         
         # Convert numpy types to native Python types for JSON serialization
         tech_analysis = feedback['technical_analysis']['image_characteristics']
