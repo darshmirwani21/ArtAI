@@ -23,6 +23,8 @@ uploadArea.addEventListener('click', () => {
 // File input change handler
 fileInput.addEventListener('change', (e) => {
     handleFile(e.target.files[0]);
+    
+    analyzeBtn.disabled = true;
 });
 
 // Drag and drop handlers
