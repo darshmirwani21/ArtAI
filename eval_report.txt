@@ -1,0 +1,25 @@
+Model: LogisticRegression
+CV Accuracy: 0.7311 ± 0.0381
+Val Accuracy: 0.7714
+
+Classification Report:
+               precision    recall  f1-score   support
+
+       Cubism     0.3333    0.3333    0.3333         3
+Expressionism     0.6000    1.0000    0.7500         3
+      Fauvism     0.8750    0.6364    0.7368        11
+     Futurism     0.9091    1.0000    0.9524        10
+Impressionism     0.6000    0.6000    0.6000         5
+  art_nouveau     1.0000    1.0000    1.0000         3
+
+     accuracy                         0.7714        35
+    macro avg     0.7196    0.7616    0.7288        35
+ weighted avg     0.7862    0.7714    0.7680        35
+
+Confusion Matrix:
+[[ 1  0  1  1  0  0]
+ [ 0  3  0  0  0  0]
+ [ 2  0  7  0  2  0]
+ [ 0  0  0 10  0  0]
+ [ 0  2  0  0  3  0]
+ [ 0  0  0  0  0  3]]

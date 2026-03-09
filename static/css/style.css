@@ -574,3 +574,166 @@ footer {
     scrollbar-color: #9CAF88 transparent;
     scrollbar-width: thin;
 }
+/* additions */
+/* ── Classifier banner ───────────────────────────────────────────────────── */
+.classifier-banner {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: rgba(156, 175, 136, 0.12);
+    border: 1.5px solid var(--primary-color);
+    border-radius: 10px;
+    padding: 16px 22px;
+    margin-bottom: 22px;
+    animation: fadeInUp 0.5s ease;
+    flex-wrap: wrap;
+    gap: 12px;
+}
+
+.classifier-left {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.classifier-label {
+    font-size: 0.78rem;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--text-secondary);
+}
+
+.classifier-style {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--primary-color);
+}
+
+.classifier-right {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.confidence-label {
+    font-size: 0.82rem;
+    color: var(--text-secondary);
+    white-space: nowrap;
+}
+
+.confidence-track {
+    width: 120px;
+    height: 8px;
+    background: var(--border-color);
+    border-radius: 99px;
+    overflow: hidden;
+}
+
+.confidence-fill {
+    height: 100%;
+    border-radius: 99px;
+    transition: width 0.6s ease;
+}
+
+.confidence-value {
+    font-weight: 700;
+    font-size: 1rem;
+    color: var(--text-primary);
+    min-width: 40px;
+    text-align: right;
+}
+
+/* ── Score breakdown ─────────────────────────────────────────────────────── */
+.score-breakdown {
+    background: rgba(156, 175, 136, 0.06);
+    border: 1px solid var(--border-color);
+    border-radius: 10px;
+    padding: 18px 22px;
+    margin-bottom: 22px;
+    animation: fadeInUp 0.5s ease 0.1s backwards;
+}
+
+.breakdown-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 1rem;
+    font-weight: 700;
+    margin-bottom: 14px;
+    color: var(--text-primary);
+}
+
+.score-row {
+    display: grid;
+    grid-template-columns: 130px 1fr 42px;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 9px;
+}
+
+.score-name {
+    font-size: 0.88rem;
+    color: var(--text-secondary);
+    white-space: nowrap;
+}
+
+.score-track {
+    height: 7px;
+    background: var(--border-color);
+    border-radius: 99px;
+    overflow: hidden;
+}
+
+.score-fill {
+    height: 100%;
+    border-radius: 99px;
+    transition: width 0.5s ease;
+}
+
+.score-pct {
+    font-size: 0.82rem;
+    font-weight: 600;
+    color: var(--text-primary);
+    text-align: right;
+}
+
+/* ── Star rating ─────────────────────────────────────────────────────────── */
+.rating-section {
+    margin-top: 30px;
+    padding-top: 24px;
+    border-top: 1px solid var(--border-color);
+    text-align: center;
+    animation: fadeInUp 0.4s ease;
+}
+
+.rating-prompt {
+    font-size: 0.95rem;
+    color: var(--text-secondary);
+    margin-bottom: 12px;
+}
+
+.stars {
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+    cursor: pointer;
+}
+
+.star {
+    font-size: 2rem;
+    color: var(--border-color);
+    transition: color 0.15s, transform 0.15s;
+    user-select: none;
+}
+
+.star.active {
+    color: #e6b84a;
+    transform: scale(1.15);
+}
+
+.rating-thanks {
+    margin-top: 10px;
+    font-size: 0.9rem;
+    color: var(--primary-color);
+    font-weight: 600;
+}

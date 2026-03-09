@@ -3,10 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Art Style Analyzer - AI-Powered Painting Analysis</title>
+    <title>STYLO — AI Art Style Analyzer</title>
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
-    <script src="{{ url_for('static', filename='js/app.js') }}"></script>
 </head>
 <body>
     <div class="container">
@@ -18,19 +17,18 @@
         <main>
             <div class="upload-section">
                 <div class="upload-area" id="uploadArea">
-                    <label for="image"></label>
                     <input type="file" id="fileInput" accept="image/*">
                     <div class="upload-content" id="uploadContent">
-                        <svg class="upload-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                        <svg class="upload-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"> 
                             <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
                             <polyline points="17 8 12 3 7 8"></polyline>
                             <line x1="12" y1="3" x2="12" y2="15"></line>
                         </svg>
-                        <h3>Drag & Drop Your Painting</h3>
+                        <h3>Drag &amp; Drop Your Painting</h3>
                         <p>or click to browse</p>
                         <p class="file-info">Supports: JPG, PNG, GIF, BMP, WEBP (Max 16MB)</p>
                     </div>
-                    <div class="image-preview" id="imagePreview" style="display: none;">
+                    <div class="image-preview" id="imagePreview" style="display:none;">
                         <img id="previewImage" src="" alt="Preview">
                         <button class="remove-btn" id="removeBtn">✕</button>
                     </div>
@@ -52,14 +50,36 @@
 
                 <button class="analyze-btn" id="analyzeBtn" disabled>
                     <span class="btn-text">Analyze Painting</span>
-                    <span class="btn-loader" style="display: none;"></span>
+                    <span class="btn-loader" style="display:none;"></span>
                 </button>
             </div>
 
-            <div class="results-section" id="resultsSection" style="display: none;">
+            <!-- ── Results ───────────────────────────────────────────────── -->
+            <div class="results-section" id="resultsSection" style="display:none;">
                 <div class="result-header">
                     <h2>Analysis Results</h2>
                     <button class="close-btn" id="closeResults">✕</button>
+                </div>
+
+                <!-- Classification banner (shown only when classifier is available) -->
+                <div class="classifier-banner" id="classifierBanner" style="display:none;">
+                    <div class="classifier-left">
+                        <span class="classifier-label">STYLO Detected</span>
+                        <span class="classifier-style" id="detectedStyle"></span>
+                    </div>
+                    <div class="classifier-right">
+                        <span class="confidence-label">Confidence</span>
+                        <div class="confidence-track">
+                            <div class="confidence-fill" id="confidenceFill"></div>
+                        </div>
+                        <span class="confidence-value" id="confidenceValue"></span>
+                    </div>
+                </div>
+
+                <!-- Style score breakdown -->
+                <div class="score-breakdown" id="scoreBreakdown" style="display:none;">
+                    <h4 class="breakdown-title">Style Scores</h4>
+                    <div class="score-bars" id="scoreBars"></div>
                 </div>
 
                 <div class="result-content">
@@ -93,17 +113,29 @@
                         <div class="tech-stats" id="technicalAnalysis"></div>
                     </div>
                 </div>
+
+                <!-- User rating -->
+                <div class="rating-section" id="ratingSection" style="display:none;">
+                    <p class="rating-prompt">Was this analysis helpful?</p>
+                    <div class="stars" id="starRating">
+                        <span class="star" data-value="1">★</span>
+                        <span class="star" data-value="2">★</span>
+                        <span class="star" data-value="3">★</span>
+                        <span class="star" data-value="4">★</span>
+                        <span class="star" data-value="5">★</span>
+                    </div>
+                    <p class="rating-thanks" id="ratingThanks" style="display:none;">Thanks for your feedback!</p>
+                </div>
             </div>
 
-            <div class="error-message" id="errorMessage" style="display: none;"></div>
+            <div class="error-message" id="errorMessage" style="display:none;"></div>
         </main>
 
         <footer>
-            <p>Powered by Vision Transformer (ViT-B/16) | Built for Art Analysis</p>
+            <p>Powered by Vision Transformer (ViT-B/16) + Linear Probe | Built for Art Analysis</p>
         </footer>
     </div>
 
     <script src="{{ url_for('static', filename='js/app.js') }}"></script>
 </body>
 </html>
-

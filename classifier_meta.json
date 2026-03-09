@@ -1,0 +1,17 @@
+{
+  "styles": [
+    "Cubism",
+    "Expressionism",
+    "Fauvism",
+    "Futurism",
+    "Impressionism",
+    "art_nouveau"
+  ],
+  "dropped": [
+    "Neoclassicism",
+    "Surrealism"
+  ],
+  "best_model": "LogisticRegression",
+  "cv_accuracy": 0.7310924369747899,
+  "val_accuracy": 0.7714285714285715
+}
