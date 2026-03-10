@@ -127,7 +127,9 @@ main {
 .upload-section {
     margin-bottom: 30px;
 }
-
+#fileInput {
+    display: none;
+}
 .upload-area {
     border: 2px solid var(--border-color);
     border-radius: 12px;
